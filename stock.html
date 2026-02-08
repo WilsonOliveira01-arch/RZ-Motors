@@ -1,0 +1,506 @@
+﻿<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock | RZ Motors</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</head>
+<body>
+    <div id="preloader">
+        <div class="loader-logo"><img src="logo.png" alt="RZ Motors"></div>
+        <div class="speed-lines"><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+    </div>
+
+    <canvas id="bg-canvas"></canvas>
+    
+    <header>
+        <a href="index.html" class="logo"><img src="logo.png" alt="RZ Motors"></a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="stock.html" class="active">Stock</a>
+            <a href="financiamento.html">Financiamento</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="contactos.html">Contactos</a>
+        </nav>
+        <div class="hamburger">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+        <a href="contactos.html" class="btn-primary">Agendar Visita</a>
+    </header>
+
+    <main class="stock-page">
+        <section class="stock-hero reveal">
+            <div class="stock-hero-text">
+                <p class="eyebrow">Garagem Virtual</p>
+                <h2 class="section-title">Stock <span>Selecionado</span></h2>
+                <p class="lead">
+                    Viaturas premium com histórico verificado, garantia incluída e entrega rápida.
+                    Escolha o próximo carro com confiança e estilo.
+                </p>
+                <div class="stock-cta-row">
+                    <a href="contactos.html" class="btn-primary">Agendar Visita</a>
+                    <a href="financiamento.html" class="btn-outline">Simular Financiamento</a>
+                </div>
+                <div class="stock-tags">
+                    <button class="tag active" data-filter="Todos">Todos</button>
+                    <button class="tag" data-filter="SUV">SUV</button>
+                    <button class="tag" data-filter="Hatchback">Hatchback</button>
+                    <button class="tag" data-filter="Sedan">Sedan</button>
+                    <button class="tag" data-filter="Coupé">Coupé</button>
+                    <button class="tag" data-filter="Carrinha">Carrinha</button>
+                </div>
+            </div>
+            <div class="stock-hero-card">
+                <div class="hero-card-header">Destaques da Semana</div>
+                <div class="hero-card-stats">
+                    <div class="stat">
+                        <span>+45</span>
+                        <p>Viaturas disponíveis</p>
+                    </div>
+                    <div class="stat">
+                        <span>7 dias</span>
+                        <p>Garantia de teste</p>
+                    </div>
+                    <div class="stat">
+                        <span>48h</span>
+                        <p>Entrega rápida</p>
+                    </div>
+                </div>
+                <div class="hero-card-footer">
+                    Seleção atualizada diariamente com veículos de baixa quilometragem.
+                </div>
+            </div>
+        </section>
+
+        <section class="stock-carousel-section reveal">
+            <div class="carousel-head">
+                <div>
+                    <h3>Deslize para navegar</h3>
+                    <p>Use o rato, teclado ou toque para explorar todo o stock.</p>
+                </div>
+                <div class="carousel-meta">
+                    <span id="stockCount" class="stock-count">10 viaturas</span>
+                    <span id="stockCurrentFilter" class="stock-filter-label">Todos</span>
+                </div>
+                <div class="carousel-controls">
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+
+            <div class="swiper game-carousel">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" data-category="Coupé">
+                        <div class="slide-badge">Destaque</div>
+                        <div class="car-img-slider" style="background-image: url('https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=1000&auto=format&fit=crop');"></div>
+                        <div class="car-info-slider">
+                            <div class="car-title-row">
+                                <h3>BMW 420d</h3>
+                                <span class="car-year">2021</span>
+                            </div>
+                            <p class="car-sub">Gran Coupé • M Pack</p>
+                            <div class="car-specs">
+                                <span>52.000 km</span>
+                                <span>Auto</span>
+                                <span>Diesel</span>
+                            </div>
+                            <div class="car-footer">
+                                <span class="price">38.900 €</span>
+                                <button class="btn-outline">Ver Detalhes</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide" data-category="Hatchback">
+                        <div class="slide-badge">Novo</div>
+                        <div class="car-img-slider" style="background-image: url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1000&auto=format&fit=crop');"></div>
+                        <div class="car-info-slider">
+                            <div class="car-title-row">
+                                <h3>Mercedes A 180d</h3>
+                                <span class="car-year">2022</span>
+                            </div>
+                            <p class="car-sub">AMG Line • Pack Night</p>
+                            <div class="car-specs">
+                                <span>39.000 km</span>
+                                <span>Auto</span>
+                                <span>Diesel</span>
+                            </div>
+                            <div class="car-footer">
+                                <span class="price">32.500 €</span>
+                                <button class="btn-outline">Ver Detalhes</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide" data-category="SUV">
+                        <div class="slide-badge">Destaque</div>
+                        <div class="car-img-slider" style="background-image: url('https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=1000&auto=format&fit=crop');"></div>
+                        <div class="car-info-slider">
+                            <div class="car-title-row">
+                                <h3>Peugeot 3008</h3>
+                                <span class="car-year">2020</span>
+                            </div>
+                            <p class="car-sub">GT Line • Virtual Cockpit</p>
+                            <div class="car-specs">
+                                <span>64.000 km</span>
+                                <span>Auto</span>
+                                <span>Diesel</span>
+                            </div>
+                            <div class="car-footer">
+                                <span class="price">26.900 €</span>
+                                <button class="btn-outline">Ver Detalhes</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide" data-category="Hatchback">
+                        <div class="slide-badge">M Pack</div>
+                        <div class="car-img-slider" style="background-image: url('https://images.unsplash.com/photo-1556189250-72ba95452242?q=80&w=1000&auto=format&fit=crop');"></div>
+                        <div class="car-info-slider">
+                            <div class="car-title-row">
+                                <h3>BMW 116d</h3>
+                                <span class="car-year">2020</span>
+                            </div>
+                            <p class="car-sub">M Sport • Shadow Line</p>
+                            <div class="car-specs">
+                                <span>58.000 km</span>
+                                <span>Manual</span>
+                                <span>Diesel</span>
+                            </div>
+                            <div class="car-footer">
+                                <span class="price">31.500 €</span>
+                                <button class="btn-outline">Ver Detalhes</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide" data-category="Carrinha">
+                        <div class="slide-badge">Sport</div>
+                        <div class="car-img-slider" style="background-image: url('https://images.unsplash.com/photo-1629828552197-2a5b6f3b0636?q=80&w=1000&auto=format&fit=crop');"></div>
+                        <div class="car-info-slider">
+                            <div class="car-title-row">
+                                <h3>Mercedes CLA</h3>
+                                <span class="car-year">2021</span>
+                            </div>
+                            <p class="car-sub">Shooting Brake • Auto</p>
+                            <div class="car-specs">
+                                <span>44.000 km</span>
+                                <span>Auto</span>
+                                <span>Gasolina</span>
+                            </div>
+                            <div class="car-footer">
+                                <span class="price">34.900 €</span>
+                                <button class="btn-outline">Ver Detalhes</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide" data-category="Sedan">
+                        <div class="slide-badge">S-Line</div>
+                        <div class="car-img-slider" style="background-image: url('https://images.unsplash.com/photo-1606152421802-db97b9c7a11b?q=80&w=1000&auto=format&fit=crop');"></div>
+                        <div class="car-info-slider">
+                            <div class="car-title-row">
+                                <h3>Audi A3</h3>
+                                <span class="car-year">2022</span>
+                            </div>
+                            <p class="car-sub">S-Line • Limousine</p>
+                            <div class="car-specs">
+                                <span>35.000 km</span>
+                                <span>Auto</span>
+                                <span>Gasolina</span>
+                            </div>
+                            <div class="car-footer">
+                                <span class="price">33.000 €</span>
+                                <button class="btn-outline">Ver Detalhes</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide" data-category="Hatchback">
+                        <div class="slide-badge">R-Line</div>
+                        <div class="car-img-slider" style="background-image: url('https://images.unsplash.com/photo-1541348263662-e068662d82af?q=80&w=1000&auto=format&fit=crop');"></div>
+                        <div class="car-info-slider">
+                            <div class="car-title-row">
+                                <h3>VW Golf 8</h3>
+                                <span class="car-year">2021</span>
+                            </div>
+                            <p class="car-sub">R-Line • 2.0 TDI</p>
+                            <div class="car-specs">
+                                <span>48.000 km</span>
+                                <span>Auto</span>
+                                <span>Diesel</span>
+                            </div>
+                            <div class="car-footer">
+                                <span class="price">29.500 €</span>
+                                <button class="btn-outline">Ver Detalhes</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide" data-category="Carrinha">
+                        <div class="slide-badge">Familiar</div>
+                        <div class="car-img-slider" style="background-image: url('https://images.unsplash.com/photo-1656494244243-7f2142e88a0b?q=80&w=1000&auto=format&fit=crop');"></div>
+                        <div class="car-info-slider">
+                            <div class="car-title-row">
+                                <h3>Seat Leon</h3>
+                                <span class="car-year">2020</span>
+                            </div>
+                            <p class="car-sub">FR • Sportstourer</p>
+                            <div class="car-specs">
+                                <span>66.000 km</span>
+                                <span>Manual</span>
+                                <span>Diesel</span>
+                            </div>
+                            <div class="car-footer">
+                                <span class="price">24.900 €</span>
+                                <button class="btn-outline">Ver Detalhes</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide" data-category="SUV">
+                        <div class="slide-badge">City</div>
+                        <div class="car-img-slider" style="background-image: url('https://images.unsplash.com/photo-1609520864223-4e6f47053b92?q=80&w=1000&auto=format&fit=crop');"></div>
+                        <div class="car-info-slider">
+                            <div class="car-title-row">
+                                <h3>Peugeot 2008</h3>
+                                <span class="car-year">2021</span>
+                            </div>
+                            <p class="car-sub">Allure • Laranja</p>
+                            <div class="car-specs">
+                                <span>41.000 km</span>
+                                <span>Manual</span>
+                                <span>Gasolina</span>
+                            </div>
+                            <div class="car-footer">
+                                <span class="price">21.500 €</span>
+                                <button class="btn-outline">Ver Detalhes</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide" data-category="SUV">
+                        <div class="slide-badge">Premium</div>
+                        <div class="car-img-slider" style="background-image: url('https://images.unsplash.com/photo-1610766324905-b873b320d575?q=80&w=1000&auto=format&fit=crop');"></div>
+                        <div class="car-info-slider">
+                            <div class="car-title-row">
+                                <h3>Audi Q3</h3>
+                                <span class="car-year">2022</span>
+                            </div>
+                            <p class="car-sub">Sportback • S-Line</p>
+                            <div class="car-specs">
+                                <span>29.000 km</span>
+                                <span>Auto</span>
+                                <span>Híbrido</span>
+                            </div>
+                            <div class="car-footer">
+                                <span class="price">46.500 €</span>
+                                <button class="btn-outline">Ver Detalhes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-block">
+                <h4>Navegação</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="stock.html">Stock</a></li>
+                    <li><a href="financiamento.html">Financiamento</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contactos.html">Contactos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-block">
+                <h4>Contactos</h4>
+                <p style="margin-bottom: 5px; opacity: 0.8;">Rua do Campo Alegre 1518<br>4150-181 Porto</p>
+                <p style="margin-bottom: 5px; opacity: 0.8;">+351 915 664 722</p>
+                <p style="margin-bottom: 5px; opacity: 0.8;">geral@rzmotors.pt</p>
+                <p style="margin-bottom: 15px; opacity: 0.8;">Segunda a Sábado 11:00 - 19:00</p>
+                
+                <div class="footer-social-inline">
+                    <a href="https://www.instagram.com/rzmotorsporto" target="_blank" class="social-icon" title="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/rzmotorsporto" target="_blank" class="social-icon" title="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-block">
+                <h4>Mapa</h4>
+                <div class="footer-map">
+                    <iframe title="Mapa RZ Motors" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=-8.665%2C41.150%2C-8.599%2C41.175&layer=mapnik&marker=41.1625%2C-8.631"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 RZ Motors Porto. The Best or Nothing.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const swiper = new Swiper('.game-carousel', {
+                effect: 'coverflow',
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                initialSlide: 1,
+                loop: true,
+                coverflowEffect: {
+                    rotate: 20, 
+                    stretch: 0,
+                    depth: 300, 
+                    modifier: 1, 
+                    slideShadows: true,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                keyboard: { enabled: true },
+            });
+
+            const filterButtons = document.querySelectorAll('.stock-tags .tag');
+            const stockCountEl = document.getElementById('stockCount');
+            const stockCurrentFilterEl = document.getElementById('stockCurrentFilter');
+            const carouselRoot = document.querySelector('.game-carousel');
+            const swiperWrapper = carouselRoot ? carouselRoot.querySelector('.swiper-wrapper') : null;
+            const canUseHoverParallax = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+            const getRealSlides = () => {
+                return Array.from(document.querySelectorAll('.game-carousel .swiper-slide'))
+                    .filter(slide => !slide.classList.contains('swiper-slide-duplicate'));
+            };
+
+            const setCardMotion = (slide, offsetX, offsetY) => {
+                slide.style.setProperty('--mx', `${Number(offsetX).toFixed(2)}px`);
+                slide.style.setProperty('--my', `${Number(offsetY).toFixed(2)}px`);
+                slide.style.setProperty('--mx-soft', `${(offsetX * 0.45).toFixed(2)}px`);
+                slide.style.setProperty('--my-soft', `${(offsetY * 0.45).toFixed(2)}px`);
+            };
+
+            const resetCardMotion = () => {
+                document.querySelectorAll('.game-carousel .swiper-slide').forEach(slide => {
+                    setCardMotion(slide, 0, 0);
+                    slide.classList.remove('card-animate');
+                });
+            };
+
+            const animateActiveCard = () => {
+                if (!carouselRoot) return;
+                const activeSlide = carouselRoot.querySelector('.swiper-slide-active');
+                if (!activeSlide || activeSlide.classList.contains('is-hidden')) return;
+
+                document.querySelectorAll('.game-carousel .swiper-slide.card-animate').forEach(slide => {
+                    slide.classList.remove('card-animate');
+                });
+
+                void activeSlide.offsetWidth;
+                activeSlide.classList.add('card-animate');
+            };
+
+            const updateMeta = (category) => {
+                const visibleSlides = getRealSlides().filter(slide => !slide.classList.contains('is-hidden'));
+                const total = visibleSlides.length;
+                if (stockCountEl) {
+                    stockCountEl.textContent = `${total} viatura${total === 1 ? '' : 's'}`;
+                }
+                if (stockCurrentFilterEl) {
+                    stockCurrentFilterEl.textContent = category;
+                }
+            };
+
+            const applyFilter = (category) => {
+                filterButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.filter === category));
+
+                // Remover loop para evitar clones durante o filtro
+                if (swiper.params.loop) {
+                    swiper.loopDestroy();
+                    swiper.params.loop = false;
+                }
+
+                const slides = document.querySelectorAll('.game-carousel .swiper-slide');
+                slides.forEach(slide => {
+                    const cats = (slide.dataset.category || '').split('|');
+                    const shouldHide = category !== 'Todos' && !cats.includes(category);
+                    slide.classList.toggle('is-hidden', shouldHide);
+                });
+
+                swiper.update();
+
+                if (category === 'Todos') {
+                    swiper.params.loop = true;
+                    swiper.loopCreate();
+                    swiper.update();
+                }
+
+                updateMeta(category);
+
+                if (swiper.slides.length > 0) {
+                    swiper.slideTo(0);
+                }
+
+                requestAnimationFrame(animateActiveCard);
+            };
+
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
+            });
+
+            swiper.on('slideChangeTransitionStart', resetCardMotion);
+            swiper.on('slideChangeTransitionEnd', animateActiveCard);
+
+            if (canUseHoverParallax && swiperWrapper) {
+                swiperWrapper.addEventListener('pointermove', (event) => {
+                    if (!(event.target instanceof Element)) return;
+                    const slide = event.target.closest('.swiper-slide');
+                    if (!slide || !slide.classList.contains('swiper-slide-active')) return;
+                    if (slide.classList.contains('is-hidden')) return;
+
+                    const rect = slide.getBoundingClientRect();
+                    const x = (event.clientX - rect.left) / rect.width - 0.5;
+                    const y = (event.clientY - rect.top) / rect.height - 0.5;
+                    const offsetX = x * 12;
+                    const offsetY = y * 10;
+                    setCardMotion(slide, offsetX, offsetY);
+                });
+
+                swiperWrapper.addEventListener('pointerleave', () => {
+                    const activeSlide = carouselRoot ? carouselRoot.querySelector('.swiper-slide-active') : null;
+                    if (activeSlide) {
+                        setCardMotion(activeSlide, 0, 0);
+                    }
+                });
+            }
+
+            applyFilter('Todos');
+        });
+    </script>
+</body>
+</html>
+
+
