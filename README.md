@@ -34,4 +34,3 @@ Este projeto é um website **Premium e Imersivo** desenvolvido para um stand aut
 ├── script.js           # Lógica, Three.js e Animações
 └── README.md           # Documentação
 
----

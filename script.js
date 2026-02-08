@@ -293,6 +293,84 @@ document.addEventListener('DOMContentLoaded', () => {
             if (messageCount) messageCount.textContent = '0';
         });
     }
+
+    // H. Mapa do Footer (interativo + movimento automático)
+    const footerMaps = document.querySelectorAll('.footer-map');
+    if (footerMaps.length > 0 && window.L) {
+        footerMaps.forEach((mapWrap) => {
+            const canvas = mapWrap.querySelector('.footer-map-canvas');
+            if (!canvas) return;
+            const address = mapWrap.dataset.address || 'Rua do Campo Alegre 1518, 4150-181 Porto';
+
+            const map = L.map(canvas, {
+                zoomControl: true,
+                scrollWheelZoom: true,
+                dragging: true,
+                doubleClickZoom: true,
+                tap: true
+            });
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+
+            let marker = null;
+            let autoPanId = null;
+            let autoPanPaused = false;
+            let resumeTimer = null;
+            let angle = Math.random() * Math.PI * 2;
+
+            const startAutoPan = () => {
+                if (autoPanId) return;
+                const step = () => {
+                    if (autoPanPaused) return;
+                    angle += 0.01;
+                    const dx = Math.cos(angle) * 0.35;
+                    const dy = Math.sin(angle) * 0.35;
+                    map.panBy([dx, dy], { animate: false });
+                    autoPanId = requestAnimationFrame(step);
+                };
+                autoPanId = requestAnimationFrame(step);
+            };
+
+            const stopAutoPan = () => {
+                if (autoPanId) cancelAnimationFrame(autoPanId);
+                autoPanId = null;
+            };
+
+            const pauseAutoPan = () => {
+                autoPanPaused = true;
+                stopAutoPan();
+                if (resumeTimer) clearTimeout(resumeTimer);
+                resumeTimer = setTimeout(() => {
+                    autoPanPaused = false;
+                    startAutoPan();
+                }, 3500);
+            };
+
+            map.on('mousedown touchstart dragstart zoomstart', pauseAutoPan);
+            map.on('dragend zoomend', pauseAutoPan);
+
+            const setMapView = (lat, lon) => {
+                map.setView([lat, lon], 16, { animate: false });
+                if (marker) marker.remove();
+                marker = L.marker([lat, lon]).addTo(map);
+                startAutoPan();
+            };
+
+            fetch(`https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(address)}`)
+                .then(res => res.json())
+                .then((data) => {
+                    if (Array.isArray(data) && data.length > 0) {
+                        setMapView(Number(data[0].lat), Number(data[0].lon));
+                        return;
+                    }
+                    setMapView(41.1579, -8.6291);
+                })
+                .catch(() => setMapView(41.1579, -8.6291));
+        });
+    }
 });
 
 

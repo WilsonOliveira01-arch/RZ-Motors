@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contactos | RZ Motors</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="icon" type="image/png" href="logo.png">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
     <div id="preloader">
@@ -133,8 +135,8 @@
 
             <div class="footer-block">
                 <h4>Mapa</h4>
-                <div class="footer-map">
-                    <iframe title="Mapa RZ Motors" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=-8.665%2C41.150%2C-8.599%2C41.175&layer=mapnik&marker=41.1625%2C-8.631"></iframe>
+                <div class="footer-map" data-address="Rua do Campo Alegre 1518, 4150-181 Porto">
+                    <div class="footer-map-canvas" role="img" aria-label="Mapa RZ Motors"></div>
                 </div>
             </div>
         </div>
@@ -146,6 +148,8 @@
     <script src="script.js"></script>
 </body>
 </html>
+
+
 
 
 
