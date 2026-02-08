@@ -296,6 +296,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // H. Mapa do Footer (interativo + movimento automático)
     const footerMaps = document.querySelectorAll('.footer-map');
+    const renderIframeFallback = (mapWrap) => {
+        if (!mapWrap) return;
+        const address = mapWrap.dataset.address || 'Rua do Campo Alegre 1518, 4150-181 Porto';
+        mapWrap.innerHTML = `<iframe title="Mapa RZ Motors" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed"></iframe>`;
+    };
+
     if (footerMaps.length > 0 && window.L) {
         footerMaps.forEach((mapWrap) => {
             const canvas = mapWrap.querySelector('.footer-map-canvas');
@@ -310,10 +316,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 tap: true
             });
 
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            const tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
                 attribution: '&copy; OpenStreetMap contributors'
-            }).addTo(map);
+            });
+            tileLayer.addTo(map);
+            let tileErrors = 0;
+            tileLayer.on('tileerror', () => {
+                tileErrors += 1;
+                if (tileErrors >= 6) {
+                    renderIframeFallback(mapWrap);
+                }
+            });
 
             let marker = null;
             let autoPanId = null;
@@ -370,6 +384,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
                 .catch(() => setMapView(41.1579, -8.6291));
         });
+    } else if (footerMaps.length > 0) {
+        footerMaps.forEach((mapWrap) => renderIframeFallback(mapWrap));
     }
 });
 
